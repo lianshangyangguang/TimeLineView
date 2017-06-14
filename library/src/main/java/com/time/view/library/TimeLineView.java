@@ -344,6 +344,21 @@ public class TimeLineView extends TextureView implements TextureView.SurfaceText
         return TimeLineView.this;
     }
 
+    /**
+     * 设置最大分辨率
+     * @param grade  级别  1-16 越大最大分辨率越大，反之越小
+     */
+    public TimeLineView setMultiple(int grade){
+
+        if (grade < 1){
+            grade = 1;
+        }else if (grade >16){
+            grade = 16;
+        }
+        multiple =  Arrays.copyOf(multiple,grade);
+        return TimeLineView.this;
+    }
+
     @Override
     public float getTime() {
         return (float) mCenterNum / hourNum;
@@ -393,23 +408,6 @@ public class TimeLineView extends TextureView implements TextureView.SurfaceText
             snum = num+"";
         }
         return snum;
-    }
-
-    //设置最小分辨率
-
-    /**
-     * 设置最大分辨率
-     * @param grade  级别  1-16 越大最大分辨率越大，反之越小
-     */
-    public TimeLineView setMultiple(int grade){
-
-        if (grade < 1){
-            grade = 1;
-        }else if (grade >16){
-            grade = 16;
-        }
-        multiple =  Arrays.copyOf(multiple,grade);
-        return TimeLineView.this;
     }
 
     private String getFormatTime(){
